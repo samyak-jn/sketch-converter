@@ -12,32 +12,30 @@ def help():
 def main(argv):
     video_id: int = -1
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "v", ["videocapture="])
-        if len(argv) != 0:
-            if argv[0] != "-v":
-                help()
-            elif argv[0] != "--videocapture":
-                help()
-        else:
-            help()
-
+        opts, _ = getopt.getopt(argv,"hv:",["videocapture="])
+        video_arg = sys.argv[1]
     except getopt.GetoptError:
         help()
-    for opt, arg in opts:
-        if opt == "-h":
-            help()
-        elif opt in ("-v", "--videocapture"):
-            if arg.isdigit():
-                video_id = int(arg)
+    except IndexError:
+        help()
+    if(video_arg == "-v" or video_arg == "--videocapture"):
+        for opt, arg in opts:
+            if opt == "-h":
+                help()
+            elif opt in ("-v", "--videocapture"):
+                if arg.isdigit() or arg == "0":
+                    video_id = int(arg)
+                else:
+                    print("Camera ID Value must be positive and integer")
+                    sys.exit()
             else:
-                print("Camera ID Value must be positive and integer")
-                sys.exit()
-        else:
-            help()
+                help()
+    else:
+        help()
 
     videocapture = cv.VideoCapture(video_id)
     if videocapture.isOpened() is False:
-        print("The Camera ID you choose cannot open the camera,exiting.")
+        print("The Camera ID you choose cannot open. It could be used by other programs or unavailable camera,exiting.")
         sys.exit()
 
     cv.namedWindow("Sketch Generator")
@@ -72,9 +70,7 @@ def main(argv):
     path: Literal = "./"
 
     files: list = []
-    for root, file in os.walk(path):
-        print(file)
-        print(root)
+    for root, _ ,file in os.walk(path):
         for f in file:
             if ".jpg" in f:
                 files.append(os.path.join(root, f))
