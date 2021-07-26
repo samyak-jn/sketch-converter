@@ -1,5 +1,4 @@
 import os
-from tkinter import image_names
 import cv2 as cv
 import sys
 import numpy as np
