@@ -40,9 +40,12 @@ sudo dnf install opencv-contrib python3-opencv opencv opencv-doc
 python3 script.py
 ```
 
-### Contributing
-This is one of my first open-source projects🥳, hence it might need improvement.
-All the issues/features are welcome. Open a PR and let's have a discussion.
+
+### Contributing ✔️ 
+
+- Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/fraction/readme-boilerplate/compare/).
+
+- All the issues/features are welcome. Open a PR and let's have a discussion.
 
 ### License
 sketch-converter is licensed under [MIT](https://github.com/samyak-jn/detect/blob/master/LICENSE), hence it is open source for all.
