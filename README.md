@@ -20,9 +20,13 @@ git clone https://github.com/samyak-jn/detect.git
 # Install via pip
 pip install -r requirements.txt
 
-# (Don't have pip?) Install it via apt
+# Ubuntu - Install it via apt
 sudo apt install python3
 sudo apt-get install python3-opencv
+
+# Fedora - Install it via dnf
+sudo dnf install python3
+sudo dnf install opencv-contrib python3-opencv opencv opencv-doc
 ```
 
 ### A command to get your sketch
