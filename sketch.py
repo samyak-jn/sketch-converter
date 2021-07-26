@@ -2,36 +2,66 @@ import os
 from typing import Literal
 import cv2 as cv
 import sys
-import getopt
-import numpy
+import numpy as np
+import argparse
 
-def help():
-    print("Usage : sketch.py -v <Camera ID>")
-    sys.exit()
+np.set_printoptions(threshold=sys.maxsize)
 
-def main(argv):
-    video_id: int = -1
-    try:
-        opts, _ = getopt.getopt(argv,"hv:",["videocapture="])
-        video_arg = sys.argv[1]
-    except getopt.GetoptError:
-        help()
-    except IndexError:
-        help()
-    if(video_arg == "-v" or video_arg == "--videocapture"):
-        for opt, arg in opts:
-            if opt == "-h":
-                help()
-            elif opt in ("-v", "--videocapture"):
-                if arg.isdigit() or arg == "0":
-                    video_id = int(arg)
-                else:
-                    print("Camera ID Value must be positive and integer")
-                    sys.exit()
-            else:
-                help()
+
+def pencilsketch(img:np.ndarray,isGray:bool = False) -> np.ndarray:
+    dst_gray:np.ndarray;dst_color:np.ndarray
+    #TODO: Gray and Color param need adjusment
+    dst_gray, dst_color = cv.pencilSketch(img, sigma_s=60, sigma_r=0.07, shade_factor=0.05) 
+    if(isGray == True):
+        return dst_gray
     else:
-        help()
+        return dst_color
+
+
+def main():
+    video_id: int = 0
+    red_args:int = 0
+    green_args:int = 0
+    blue_args:int = 0
+    pgcolor:int = 0
+    pscolor:int = 0
+
+    arg_parser = argparse.ArgumentParser(description="Sketch App")
+    arg_parser.add_argument("-v", "--videocapture", metavar="<Video ID>", type=int, help="Select Camera")
+
+    arg_parser.add_argument("-pgc", "--pgcolor", metavar="<-pgc 0|1 >", type=int, help="Enable Colorful Pencil Sketch")
+    arg_parser.add_argument("-psc", "--pscolor", metavar="<-psc 0|1 >", type=int, help="Enable Grayscale Pencil Sketch")
+
+    # TODO: This params could be change
+    arg_parser.add_argument("-r", "--red", metavar="<red color code>", type=int, help="Red Color Code")
+    arg_parser.add_argument("-b", "--blue", metavar="<blue color code>", type=int, help="Blue Color Code")
+    arg_parser.add_argument("-g", "--green", metavar="<green color code>", type=int, help="Green Color Code")
+
+    args = arg_parser.parse_args()
+
+    pgcolor = args.pgcolor
+    pscolor = args.pscolor
+
+    if(pgcolor == 1 and pscolor == 1):
+        print("Grayscale and Colorful Pencil Sketch can't use at the same time")
+        sys.exit()
+
+    videocapture_arg:int = args.videocapture
+    if videocapture_arg >= 0:
+        video_id = videocapture_arg
+
+    if bool(args.red):
+        print(args.red)
+        red_args = args.red
+    
+    if bool(args.green):
+        print(args.green)
+        red_args = args.green
+
+    if bool(args.blue):
+        print(args.blue)
+        red_args = args.blue
+    
 
     videocapture = cv.VideoCapture(video_id)
     if videocapture.isOpened() is False:
@@ -44,7 +74,7 @@ def main(argv):
 
     while True:
         check: bool
-        frame: numpy.ndarray
+        frame: np.ndarray
         check, frame = videocapture.read()
         if check is False:
             print("The Camera failed to get detected. \n Please check your settings.")
@@ -69,6 +99,7 @@ def main(argv):
     # reading all the original captured files from the current directory
     path: Literal = "./"
 
+    # TODO : Fix Duplicate result bug problem.
     files: list = []
     for root, _ ,file in os.walk(path):
         for f in file:
@@ -78,18 +109,37 @@ def main(argv):
 
     file: str
     for file in files:
-        picture: numpy.ndarray = cv.imread(file)
-        gray_pic = cv.cvtColor(picture, cv.COLOR_BGR2GRAY)
-        img_invert = cv.bitwise_not(gray_pic)
-        gblur_img = cv.GaussianBlur(img_invert, (21, 21), sigmaX=0, sigmaY=0)
-        dodged_img = cv.divide(gray_pic, 255 - gblur_img, scale=256)
-        cv.imshow("last", dodged_img)
-        cv.imwrite(f"Sketch_Image_{image_count}.jpg", dodged_img)
-        print(f"Sketch {image_count} Created")
-        image_count += 1
+        picture: np.ndarray
+        if(pgcolor == 1):
+            picture = pencilsketch(cv.imread(file),True)
+            cv.imwrite(f"Sketch_Image_{image_count}.jpg", picture)
+            print(f"Sketch {image_count} Created")
+            image_count += 1
+            
+        elif(pscolor == 1):
+            picture = pencilsketch(cv.imread(file),False)
+            cv.imwrite(f"Sketch_Image_{image_count}.jpg", picture)
+            print(f"Sketch {image_count} Created")
+            image_count += 1
+        else:
+            picture = cv.imread(file)
+            gray_pic = cv.cvtColor(picture, cv.COLOR_BGR2GRAY)
+            img_invert = cv.bitwise_not(gray_pic)
+            gblur_img = cv.GaussianBlur(img_invert, (21, 21), sigmaX=0, sigmaY=0)
+            dodged_img = cv.divide(gray_pic, 255 - gblur_img, scale=256)
+            cv.imshow("last", dodged_img)
+
+            x = np.where((dodged_img==[0,0,0]))
+            print(len(dodged_img))
+
+            # = [blue_args,green_args,red_args]
+            cv.imwrite(f"Sketch_Image_{image_count}.jpg", dodged_img)
+            print(f"Sketch {image_count} Created")
+            
+            image_count += 1
 
     print("Thank you for using Sketch Converter!")
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()
