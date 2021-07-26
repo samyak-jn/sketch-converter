@@ -1,5 +1,9 @@
 # Image to Sketch Converter
 
+<a href="https://github.com/python/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+<a href="https://github.com/samyak-jn/detect/blob/master/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
+<img src="https://img.shields.io/badge/made%20with-python-blue.svg" alt="made with python">
+
 Fond of **sketches**, but bad at **art**? 🥴
 
 Here's a little something for people like you and me.
