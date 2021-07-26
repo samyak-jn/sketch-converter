@@ -1,5 +1,5 @@
 import os
-from typing import Literal
+from tkinter import image_names
 import cv2 as cv
 import sys
 import numpy as np
@@ -8,7 +8,7 @@ import argparse
 np.set_printoptions(threshold=sys.maxsize)
 
 
-def pencilsketch(img:np.ndarray,isGray:bool = False) -> np.ndarray:
+def PencilSketch(img:np.ndarray,isGray:bool = False) -> np.ndarray:
     dst_gray:np.ndarray;dst_color:np.ndarray
     #TODO: Gray and Color param need adjusment
     dst_gray, dst_color = cv.pencilSketch(img, sigma_s=60, sigma_r=0.07, shade_factor=0.05) 
@@ -16,6 +16,33 @@ def pencilsketch(img:np.ndarray,isGray:bool = False) -> np.ndarray:
         return dst_gray
     else:
         return dst_color
+
+def ImageProcess(files,pgcolor,pscolor,image_count):
+    for file in files:
+        picture: np.ndarray
+        if(pgcolor == 1):
+            picture = PencilSketch(cv.imread(file),True)
+            cv.imwrite(f"Sketch_Image_{image_count}.jpg", picture)
+            print(f"Sketch {image_count} Created")
+            image_count += 1
+            
+        elif(pscolor == 1):
+            picture = PencilSketch(cv.imread(file),False)
+            cv.imwrite(f"Sketch_Image_{image_count}.jpg", picture)
+            print(f"Sketch {image_count} Created")
+            image_count += 1
+        else:
+            picture = cv.imread(file)
+            gray_pic = cv.cvtColor(picture, cv.COLOR_BGR2GRAY)
+            img_invert = cv.bitwise_not(gray_pic)
+            gblur_img = cv.GaussianBlur(img_invert, (21, 21), sigmaX=0, sigmaY=0)
+            dodged_img = cv.divide(gray_pic, 255 - gblur_img, scale=256)
+            cv.imshow("last", dodged_img)
+
+            cv.imwrite(f"Sketch_Image_{image_count}.jpg", dodged_img)
+            print(f"Sketch {image_count} Created")
+            
+            image_count += 1
 
 
 def main():
@@ -25,9 +52,11 @@ def main():
     blue_args:int = 0
     pgcolor:int = 0
     pscolor:int = 0
+    picture_enabled:bool = False
 
     arg_parser = argparse.ArgumentParser(description="Sketch App")
     arg_parser.add_argument("-v", "--videocapture", metavar="<Video ID>", type=int, help="Select Camera")
+    arg_parser.add_argument("-p", "--picture", metavar="-p picture", type=str, help="Choose picture")
 
     arg_parser.add_argument("-pgc", "--pgcolor", metavar="<-pgc 0|1 >", type=int, help="Enable Colorful Pencil Sketch")
     arg_parser.add_argument("-psc", "--pscolor", metavar="<-psc 0|1 >", type=int, help="Enable Grayscale Pencil Sketch")
@@ -42,14 +71,6 @@ def main():
     pgcolor = args.pgcolor
     pscolor = args.pscolor
 
-    if(pgcolor == 1 and pscolor == 1):
-        print("Grayscale and Colorful Pencil Sketch can't use at the same time")
-        sys.exit()
-
-    videocapture_arg:int = args.videocapture
-    if videocapture_arg >= 0:
-        video_id = videocapture_arg
-
     if bool(args.red):
         print(args.red)
         red_args = args.red
@@ -63,6 +84,31 @@ def main():
         red_args = args.blue
     
 
+
+    if(pgcolor == 1 and pscolor == 1):
+        print("Grayscale and Colorful Pencil Sketch can't use at the same time")
+        sys.exit()
+
+    videocapture_arg:int = args.videocapture
+    picture:str = args.picture
+    if picture == None or picture == "":
+        if videocapture_arg >= 0:
+            print(f"Video mode: {videocapture_arg}")
+            video_id = videocapture_arg
+            VideoMode(video_id,pgcolor,pscolor)
+    else:
+        picture_enabled = True
+        print(f"Picture mode: {picture}")
+        PictureMode(picture,pgcolor,pscolor)
+
+def PictureMode(png:str,pgcolor:int,pscolor:int):
+    files:list[str]  = []
+    files.append(png)
+    image_count:int = 0
+    ImageProcess(files,pgcolor,pscolor,image_count)
+
+
+def VideoMode(video_id,pgcolor,pscolor) -> None:
     videocapture = cv.VideoCapture(video_id)
     if videocapture.isOpened() is False:
         print("The Camera ID you choose cannot open. It could be used by other programs or unavailable camera,exiting.")
@@ -97,7 +143,7 @@ def main():
     cv.destroyAllWindows()
 
     # reading all the original captured files from the current directory
-    path: Literal = "./"
+    path: str = "./"
 
     # TODO : Fix Duplicate result bug problem.
     files: list = []
@@ -105,40 +151,12 @@ def main():
         for f in file:
             if ".jpg" in f:
                 files.append(os.path.join(root, f))
-    image_count: int = 0
 
-    file: str
-    for file in files:
-        picture: np.ndarray
-        if(pgcolor == 1):
-            picture = pencilsketch(cv.imread(file),True)
-            cv.imwrite(f"Sketch_Image_{image_count}.jpg", picture)
-            print(f"Sketch {image_count} Created")
-            image_count += 1
-            
-        elif(pscolor == 1):
-            picture = pencilsketch(cv.imread(file),False)
-            cv.imwrite(f"Sketch_Image_{image_count}.jpg", picture)
-            print(f"Sketch {image_count} Created")
-            image_count += 1
-        else:
-            picture = cv.imread(file)
-            gray_pic = cv.cvtColor(picture, cv.COLOR_BGR2GRAY)
-            img_invert = cv.bitwise_not(gray_pic)
-            gblur_img = cv.GaussianBlur(img_invert, (21, 21), sigmaX=0, sigmaY=0)
-            dodged_img = cv.divide(gray_pic, 255 - gblur_img, scale=256)
-            cv.imshow("last", dodged_img)
-
-            x = np.where((dodged_img==[0,0,0]))
-            print(len(dodged_img))
-
-            # = [blue_args,green_args,red_args]
-            cv.imwrite(f"Sketch_Image_{image_count}.jpg", dodged_img)
-            print(f"Sketch {image_count} Created")
-            
-            image_count += 1
+    ImageProcess(files,pgcolor,pscolor,image_count)
 
     print("Thank you for using Sketch Converter!")
+
+
 
 
 if __name__ == "__main__":
