@@ -5,8 +5,6 @@ import sys
 import numpy as np
 import argparse
 
-from scipy.fft import dst
-
 np.set_printoptions(threshold=sys.maxsize)
 
 
