@@ -51,4 +51,4 @@ python3 script.py
 sketch-converter is licensed under [MIT](https://github.com/samyak-jn/detect/blob/master/LICENSE), hence it is open source for all.
 
 ---
-Copyright © 2020 Samyak Jain
+Copyright © 2020-21 Onuralp SEZER, Samyak Jain
