@@ -24,11 +24,11 @@ git clone https://github.com/samyak-jn/detect.git
 # Install via pip
 pip install -r requirements.txt
 
-# Ubuntu - Install it via apt
+# Ubuntu - Install via apt
 sudo apt install python3
 sudo apt-get install python3-opencv
 
-# Fedora - Install it via dnf
+# Fedora - Install via dnf
 sudo dnf install python3
 sudo dnf install opencv-contrib python3-opencv opencv opencv-doc
 ```
