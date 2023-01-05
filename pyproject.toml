@@ -26,4 +26,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-sketch_converter = "sketchconverter.cli:main"
+sketch_converter = "sketchconverter.cli:app"

@@ -1,3 +1,6 @@
+import os
+from sys import exit as sys_exit
+
 import cv2 as cv
 import numpy as np
 
@@ -15,7 +18,7 @@ def PencilSketch(img: np.ndarray, isGray: bool = False) -> np.ndarray:
         return dst_color
 
 
-def ImageProcess(files, pgcolor, pscolor, image_count):
+def ImageProcess(files, pgcolor, pscolor, image_count: int = 0):
     for file in files:
         picture: np.ndarray
         if pgcolor == 1:
@@ -41,3 +44,54 @@ def ImageProcess(files, pgcolor, pscolor, image_count):
             print(f"Sketch {image_count} Created")
 
             image_count += 1
+
+
+def CameraProcess(pgcolor, pscolor, video_src: int = 0):
+    videocapture = cv.VideoCapture(video_src)
+    if videocapture.isOpened() is False:
+        print(
+            """The Camera ID you choose cannot open. \
+            It could be used by other programs or \
+            unavailable camera,exiting."""
+        )
+        sys_exit()
+
+    cv.namedWindow("Sketch Generator")
+    image_count: int = 0
+    print("To capture an image, press SpaceBar otherwise press Esc Key to Exit")
+
+    while True:
+        check: bool
+        frame: np.ndarray
+        check, frame = videocapture.read()
+        if check is False:
+            print("The Camera failed to get detected. \n Please check your settings.")
+            sys_exit()
+
+        cv.imshow("Sketch Generator", frame)
+        key: int = cv.waitKey(1)
+        ## Space Bar Key is used to Capture the image
+        ## Esc Key is used to exit the frame
+        if key % 256 == 32:  # Space key
+            name: str = f"Original_Image_{image_count}.jpg"
+            cv.imwrite(name, frame)
+            print(f"Image {image_count} Captured")
+            image_count += 1
+        elif key % 256 == 27:  # Esc Key
+            print("You have pressed an escape key, Exiting!")
+            break
+
+    videocapture.release()
+    cv.destroyAllWindows()
+
+    # reading all the original captured files from the current directory
+    path: str = "./"
+
+    # TODO : Fix Duplicate result bug problem.
+    files: list = []
+    for root, _, file in os.walk(path):
+        for f in file:
+            if ".jpg" in f:
+                files.append(os.path.join(root, f))
+
+    ImageProcess(files, pgcolor, pscolor, image_count)
