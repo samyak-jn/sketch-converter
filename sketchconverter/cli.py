@@ -13,7 +13,7 @@ def version():
 
 
 @app.command()
-def video_capture(videosrc: int, pgcolor: int, pscolor: int = 0) -> None:
+def video_capture(videosrc: int = 0, pgcolor: int = 1, pscolor: int = 0) -> None:
     if videosrc >= 0:
         if pgcolor == 1 and pscolor == 1:
             print("Grayscale and Colorful Pencil Sketch can't use at the same time")
