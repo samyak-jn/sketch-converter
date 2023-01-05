@@ -24,11 +24,11 @@ git clone https://github.com/samyak-jn/detect.git
 # Install via pip
 pip install -r requirements.txt
 
-# Ubuntu - Install it via apt
+# Ubuntu - Install via apt
 sudo apt install python3
 sudo apt-get install python3-opencv
 
-# Fedora - Install it via dnf
+# Fedora - Install via dnf
 sudo dnf install python3
 sudo dnf install opencv-contrib python3-opencv opencv opencv-doc
 ```
@@ -51,4 +51,4 @@ python3 script.py
 sketch-converter is licensed under [MIT](https://github.com/samyak-jn/detect/blob/master/LICENSE), hence it is open source for all.
 
 ---
-Copyright © 2020 Samyak Jain
+Copyright © 2020-21 Onuralp SEZER, Samyak Jain
