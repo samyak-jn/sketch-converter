@@ -12,6 +12,11 @@ python = "^3.8"
 typer = "^0.7.0"
 opencv-python = "^4.7.0.68"
 numpy = "^1.24.1"
+colorama = "^0.4.6"
+commonmark = "^0.9.1"
+pygments = "^2.14.0"
+rich = "^13.0.0"
+shellingham = "^1.5.0.post1"
 
 
 [tool.poetry.group.dev.dependencies]

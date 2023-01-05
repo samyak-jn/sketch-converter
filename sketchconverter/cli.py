@@ -1,10 +1,10 @@
-from typer import Typer
+import typer
 
 from sketchconverter import __version__
 
 from .sketch import CameraProcess, ImageProcess
 
-app = Typer()
+app = typer.Typer()
 
 
 @app.command()
