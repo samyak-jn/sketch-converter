@@ -4,19 +4,27 @@ import sys
 
 import cv2 as cv
 import numpy as np
-from sketch import ImageProcess
+
+from sketchconverter import __version__
+
+from .sketch import ImageProcess
 
 
 def main():
-    pgcolor: int = 0
-    pscolor: int = 0
-
     arg_parser = argparse.ArgumentParser(description="Sketch App")
     arg_parser.add_argument(
-        "-v", "--videocapture", metavar="<Video ID>", type=int, help="Select Camera"
+        "-vc", "--videocapture", metavar="<Video ID>", type=int, help="Select Camera"
     )
     arg_parser.add_argument(
         "-p", "--picture", metavar="-p picture", type=str, help="Choose picture"
+    )
+
+    arg_parser.add_argument(
+        "-v",
+        "--version",
+        action="version",
+        help="Version",
+        version=f"Sketch Converter - {__version__}",
     )
 
     arg_parser.add_argument(
@@ -35,7 +43,6 @@ def main():
     )
 
     args = arg_parser.parse_args()
-
     pgcolor = args.pgcolor
     pscolor = args.pscolor
 

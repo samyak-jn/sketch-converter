@@ -5,7 +5,7 @@ description = "Converter your picture into sketch with just one line of command"
 authors = ["Onuralp SEZER <thunderbirdtr@fedoraproject.org>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "sketch_converter"}]
+packages = [{include = "sketchconverter"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
