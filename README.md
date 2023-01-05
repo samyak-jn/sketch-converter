@@ -18,30 +18,12 @@ NOTE: All the sketches will be saved in the parent directory itself.
 ```bash
 # Clone the repository
 git clone https://github.com/samyak-jn/detect.git
-
-# Install all the required modules
-
-# Install via pip
-pip install -r requirements.txt
-
-# Ubuntu - Install via apt
-sudo apt install python3
-sudo apt-get install python3-opencv
-
-# Fedora - Install via dnf
-sudo dnf install python3
-sudo dnf install opencv-contrib python3-opencv opencv opencv-doc
+poetry shell
+poetry install
+sketch_converter -h
 ```
 
-### A command to get your sketch
-
-```python
-# Run the script
-python3 script.py
-```
-
-
-### Contributing ✔️ 
+### Contributing ✔️
 
 - Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/fraction/readme-boilerplate/compare/).
 
@@ -51,4 +33,4 @@ python3 script.py
 sketch-converter is licensed under [MIT](https://github.com/samyak-jn/detect/blob/master/LICENSE), hence it is open source for all.
 
 ---
-Copyright © 2020-21 Onuralp SEZER, Samyak Jain
+Copyright © 2023 Onuralp SEZER, Samyak Jain
