@@ -1,4 +1,5 @@
 # Image to Sketch Converter
+[![main-ci](https://github.com/samyak-jn/detect/actions/workflows/main.yml/badge.svg)](https://github.com/samyak-jn/detect/actions/workflows/main.yml)
 
 <a href="https://github.com/python/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 <a href="https://github.com/samyak-jn/detect/blob/master/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
@@ -20,7 +21,14 @@ NOTE: All the sketches will be saved in the parent directory itself.
 git clone https://github.com/samyak-jn/detect.git
 poetry shell
 poetry install
-sketch_converter -h
+sketch_converter --help
+```
+
+## Camera Usage
+
+```bash
+# video_src = 1 , grayscale mode = 1
+sketch_converter video-capture 1 1
 ```
 
 ### Contributing ✔️
