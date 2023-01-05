@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "sketch-converter"
+version = "0.1.0"
+description = "Converter your picture into sketch with just one line of command"
+authors = ["Onuralp SEZER <thunderbirdtr@fedoraproject.org>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "sketch_converter"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = "^0.7.0"
+opencv-python = "^4.7.0.68"
+numpy = "^1.24.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^2.21.0"
+black = "^22.12.0"
+mypy = "^0.991"
+requests = "^2.28.1"
+ruff = "^0.0.211"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+musepipe = "sketchconverter.cli:main"
