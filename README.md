@@ -9,6 +9,11 @@
 
 [![main-ci](https://github.com/samyak-jn/detect/actions/workflows/main.yml/badge.svg)](https://github.com/samyak-jn/detect/actions/workflows/main.yml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/samyak-jn/detect/master.svg)](https://results.pre-commit.ci/latest/github/samyak-jn/detect/master)
+![PyPI](https://img.shields.io/pypi/v/sketch-converter)
+![PyPI - Format](https://img.shields.io/pypi/format/sketch-converter)
+![PyPI - Status](https://img.shields.io/pypi/status/sketch-converter?color=orange)
+![PyPI - Implementation](https://img.shields.io/pypi/implementation/sketch-converter)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/sketch-converter)
 
 <a href="https://github.com/python/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 <a href="https://github.com/samyak-jn/detect/blob/master/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
