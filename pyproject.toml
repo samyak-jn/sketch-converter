@@ -2,10 +2,28 @@
 name = "sketch-converter"
 version = "0.1.0"
 description = "Converter your picture into sketch with just one line of command"
-authors = ["Onuralp SEZER <thunderbirdtr@fedoraproject.org>"]
+authors = ["Onuralp SEZER <thunderbirdtr@fedoraproject.org>","Samyak Jain <samyak.jn11@gmail.com>",]
+maintainers = [
+    "Samyak Jain <samyak.jn11@gmail.com>",
+    "Onuralp SEZER <thunderbirdtr@fedoraproject.org>",
+]
 license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/samyak-jn/detect"
+repository = "https://github.com/samyak-jn/detect"
+documentation = "https://github.com/samyak-jn/detect/blob/main/README.md"
 packages = [{include = "sketchconverter"}]
+keywords = ["opencv","sketch-converter","sketch","camera","image"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: X11 Applications",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: OS Independent",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
