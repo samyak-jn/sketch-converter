@@ -9,20 +9,17 @@ on:
 
 jobs:
   build-n-publish:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest]
-        python-version: ["3.8", "3.9", "3.10"]
-    runs-on: ${{ matrix.os }}
+    name: Build and publish to PyPI
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.8"
 
       - name: Build source and wheel distributions
         run: |
