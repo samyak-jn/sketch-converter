@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sketch-converter"
-version = "0.1.0"
+version = "0.1.1"
 description = "Converter your picture into sketch with just one line of command"
 authors = ["Onuralp SEZER <thunderbirdtr@fedoraproject.org>","Samyak Jain <samyak.jn11@gmail.com>",]
 maintainers = [
@@ -9,10 +9,10 @@ maintainers = [
 ]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/samyak-jn/detect"
-repository = "https://github.com/samyak-jn/detect"
-documentation = "https://github.com/samyak-jn/detect/blob/main/README.md"
-packages = [{include = "sketchconverter"}]
+homepage = "https://github.com/samyak-jn/sketch-converter"
+repository = "https://github.com/samyak-jn/sketch-converter"
+documentation = "https://github.com/samyak-jn/sketch-converter/blob/main/README.md"
+packages = [{include = "sketch_converter"}]
 keywords = ["opencv","sketch-converter","sketch","camera","image"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -49,4 +49,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-sketch_converter = "sketchconverter.cli:app"
+sketch-converter = "sketch_converter.cli:app"
