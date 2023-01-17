@@ -9,9 +9,9 @@ maintainers = [
 ]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/samyak-jn/detect"
-repository = "https://github.com/samyak-jn/detect"
-documentation = "https://github.com/samyak-jn/detect/blob/main/README.md"
+homepage = "https://github.com/samyak-jn/sketch-converter"
+repository = "https://github.com/samyak-jn/sketch-converter"
+documentation = "https://github.com/samyak-jn/sketch-converter/blob/main/README.md"
 packages = [{include = "sketchconverter"}]
 keywords = ["opencv","sketch-converter","sketch","camera","image"]
 classifiers = [
