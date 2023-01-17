@@ -7,8 +7,8 @@
 <h3 align="center">Fond of **sketches**, but bad at **art**? 🥴</h3>
 <br>
 
-[![main-ci](https://github.com/samyak-jn/detect/actions/workflows/main.yml/badge.svg)](https://github.com/samyak-jn/detect/actions/workflows/main.yml)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/samyak-jn/detect/master.svg)](https://results.pre-commit.ci/latest/github/samyak-jn/detect/master)
+[![main-ci](https://github.com/samyak-jn/sketch-converter/actions/workflows/main.yml/badge.svg)](https://github.com/samyak-jn/sketch-converter/actions/workflows/main.yml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/samyak-jn/sketch-converter/master.svg)](https://results.pre-commit.ci/latest/github/samyak-jn/sketch-converter/master)
 ![PyPI](https://img.shields.io/pypi/v/sketch-converter)
 ![PyPI - Format](https://img.shields.io/pypi/format/sketch-converter)
 ![PyPI - Status](https://img.shields.io/pypi/status/sketch-converter?color=orange)
@@ -16,7 +16,7 @@
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/sketch-converter)
 
 <a href="https://github.com/python/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
-<a href="https://github.com/samyak-jn/detect/blob/master/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
+<a href="https://github.com/samyak-jn/sketch-converter/blob/master/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
 <img src="https://img.shields.io/badge/made%20with-python-blue.svg" alt="made with python">
 
 
@@ -29,7 +29,7 @@ This script is written with the help of the OpenCV library in python.All the ske
 
 ```bash
 # Clone the repository
-git clone https://github.com/samyak-jn/detect.git
+git clone https://github.com/samyak-jn/sketch-converter.git
 poetry shell
 poetry install
 sketch_converter --help
@@ -49,7 +49,7 @@ sketch_converter video-capture 1 1
 - All the issues/features are welcome. Open a PR and let's have a discussion.
 
 ### License
-sketch-converter is licensed under [MIT](https://github.com/samyak-jn/detect/blob/master/LICENSE), hence it is open source for all.
+sketch-converter is licensed under [MIT](https://github.com/samyak-jn/sketch-converter/blob/master/LICENSE), hence it is open source for all.
 
 ---
 Copyright © 2023 Onuralp SEZER, Samyak Jain

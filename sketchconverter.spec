@@ -4,7 +4,7 @@ Version:        0.1.0
 Release:        1%{?dist}
 Summary:        A realtime picture converter that metamorphose real pictures into sketch.
 License:        MIT
-Url:            https://github.com/samyak-jn/detect
+Url:            https://github.com/samyak-jn/sketch-converter
 Source0:        %{pypi_source}
 
 BuildArch:      noarch
