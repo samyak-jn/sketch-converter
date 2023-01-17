@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sketch-converter"
-version = "0.1.0"
+version = "0.1.1"
 description = "Converter your picture into sketch with just one line of command"
 authors = ["Onuralp SEZER <thunderbirdtr@fedoraproject.org>","Samyak Jain <samyak.jn11@gmail.com>",]
 maintainers = [

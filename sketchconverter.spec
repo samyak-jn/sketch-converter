@@ -1,6 +1,6 @@
 
 Name:           sketch-converter
-Version:        0.1.0
+Version:        0.1.1
 Release:        1%{?dist}
 Summary:        A realtime picture converter that metamorphose real pictures into sketch.
 License:        MIT
@@ -34,5 +34,5 @@ A realtime picture converter that metamorphose real pictures into sketch.
 %{_bindir}/%{name}
 
 %changelog
-* Fri Nov 18 2022 <Samyak Jain> <jnsamyak@fedoraproject.org> - 0.1.0-1
+* Fri Nov 18 2022 <Samyak Jain> <jnsamyak@fedoraproject.org> - 0.1.1-1
 - Intial packaging for sketch-converter
