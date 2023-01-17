@@ -1,6 +1,6 @@
 import typer
 
-from sketchconverter import __version__
+from sketch_converter import __copyright__, __version__
 
 from .sketch import CameraProcess, ImageProcess
 
@@ -10,6 +10,7 @@ app = typer.Typer()
 @app.command()
 def version():
     print(f"Sketch Converter - {__version__}")
+    print(__copyright__)
 
 
 @app.command()
