@@ -15,7 +15,7 @@ BuildRequires:  python3-devel
 A realtime picture converter that metamorphose real pictures into sketch.
 
 %prep
-%autosetup -p1
+%autosetup -n sketch_converter -p1
 
 %generate_buildrequires
 %pyproject_buildrequires -r
