@@ -1,5 +1,5 @@
 
-Name:           sketch-converter
+Name:           sketch_converter
 Version:        0.1.1
 Release:        1%{?dist}
 Summary:        A realtime picture converter that metamorphose real pictures into sketch.
@@ -15,7 +15,7 @@ BuildRequires:  python3-devel
 A realtime picture converter that metamorphose real pictures into sketch.
 
 %prep
-%autosetup -n sketch_converter -p1
+%autosetup -p1
 
 %generate_buildrequires
 %pyproject_buildrequires -r
