@@ -1,5 +1,5 @@
 <p align="center">
-  <img style="width:40%;" src="logo/sketch.png" />
+  <img style="width:40%;" src="https://github.com/samyak-jn/sketch-converter/raw/master/logo/sketch.png" />
 </p>
 
 <h1 align="center">Image to Sketch Converter</h1>
@@ -8,12 +8,12 @@
 <br>
 
 [![main-ci](https://github.com/samyak-jn/sketch-converter/actions/workflows/main.yml/badge.svg)](https://github.com/samyak-jn/sketch-converter/actions/workflows/main.yml)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/samyak-jn/sketch-converter/master.svg)](https://results.pre-commit.ci/latest/github/samyak-jn/sketch-converter/master)
-![PyPI](https://img.shields.io/pypi/v/sketch-converter)
-![PyPI - Format](https://img.shields.io/pypi/format/sketch-converter)
-![PyPI - Status](https://img.shields.io/pypi/status/sketch-converter?color=orange)
-![PyPI - Implementation](https://img.shields.io/pypi/implementation/sketch-converter)
-![PyPI - Wheel](https://img.shields.io/pypi/wheel/sketch-converter)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/samyak-jn/sketch-converter/master.svg)](https://results.pre-commit.ci/latest/github/samyak-jn/sketch_converter/master)
+![PyPI](https://img.shields.io/pypi/v/sketch_converter)
+![PyPI - Format](https://img.shields.io/pypi/format/sketch_converter)
+![PyPI - Status](https://img.shields.io/pypi/status/sketch_converter?color=orange)
+![PyPI - Implementation](https://img.shields.io/pypi/implementation/sketch_converter)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/sketch_converter)
 
 <a href="https://github.com/python/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 <a href="https://github.com/samyak-jn/sketch-converter/blob/master/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>

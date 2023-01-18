@@ -31,7 +31,7 @@ A realtime picture converter that metamorphose real pictures into sketch.
 %doc README.md
 %doc SECURITY.md
 %license LICENSE
-%{_bindir}/%{name}
+%{_bindir}/sketch-converter
 
 %changelog
 * Fri Nov 18 2022 <Samyak Jain> <jnsamyak@fedoraproject.org> - 0.1.1-1
