@@ -44,6 +44,9 @@ mypy = "^0.991"
 requests = "^2.28.2"
 ruff = "^0.0.238"
 
+[tool.bandit]
+tests = ["B201", "B301"]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

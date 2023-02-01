@@ -14,6 +14,8 @@
 ![PyPI - Status](https://img.shields.io/pypi/status/sketch_converter?color=orange)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/sketch_converter)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/sketch_converter)
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+
 
 <a href="https://github.com/python/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 <a href="https://github.com/samyak-jn/sketch-converter/blob/master/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
