@@ -1,4 +1,5 @@
 from sys import exit as sys_exit
+from typing import List
 
 import numpy as np
 from cv2 import (
@@ -17,7 +18,7 @@ from cv2 import (
 )
 
 
-def ImageColorPencilSketch(files: list[str], image_count: int = 0) -> None:
+def ImageColorPencilSketch(files: List[str], image_count: int = 0) -> None:
     for file in files:
         picture: np.ndarray = imread(file)
         _, color = pencilSketch(
@@ -27,7 +28,7 @@ def ImageColorPencilSketch(files: list[str], image_count: int = 0) -> None:
         print(f"Sketch {image_count} Created")
 
 
-def ImageGrayScalePencilSketch(files: list[str], image_count: int = 0) -> None:
+def ImageGrayScalePencilSketch(files: List[str], image_count: int = 0) -> None:
     for file in files:
         picture: np.ndarray = imread(file)
         gray_pic = cvtColor(picture, COLOR_BGR2GRAY)
