@@ -1,8 +1,12 @@
 import typer
 
 from sketch_converter import __copyright__, __version__
-
-from .sketch import CameraProcess, ImageProcess
+from sketch_converter.sketch import (
+    CameraColorPencilSketch,
+    CameraGrayPencilSketch,
+    ImageColorPencilSketch,
+    ImageGrayScalePencilSketch,
+)
 
 app = typer.Typer()
 
@@ -14,26 +18,36 @@ def version():
 
 
 @app.command()
-def video_capture(videosrc: int = 0, pgcolor: int = 1, pscolor: int = 0) -> None:
-    if videosrc >= 0:
-        if pgcolor == 1 and pscolor == 1:
-            print("Grayscale and Colorful Pencil Sketch can't use at the same time")
-            return
-        print(f"Video mode: {videosrc}")
-        CameraProcess(pgcolor, pscolor, videosrc)
+def video_capture_grayscale(videosrc: int = 0) -> None:
+    print(f"Video mode(Grayscale): {videosrc}")
+    CameraGrayPencilSketch(videosrc)
     return
 
 
 @app.command()
-def picture_capture(image_file: str, pgcolor: int, pscolor: int) -> None:
+def video_capture_color(videosrc: int = 0) -> None:
+    print(f"Video mode(Colorful): {videosrc}")
+    CameraColorPencilSketch(videosrc)
+    return
+
+
+@app.command()
+def convert_to_gray_pencil_sketch(image_file: str) -> None:
     if image_file is not None or image_file != "":
-        if pgcolor == 1 and pscolor == 1:
-            print("Grayscale and Colorful Pencil Sketch can't use at the same time")
-            return
-        print(f"Picture mode: {image_file}")
+        print(f"Picture mode(GrayScale): {image_file}")
         files: list[str] = []
         files.append(image_file)
-        ImageProcess(files, pgcolor, pscolor)
+        ImageGrayScalePencilSketch(files)
+    return
+
+
+@app.command()
+def convert_to_color_pencil_sketch(image_file: str) -> None:
+    if image_file is not None or image_file != "":
+        print(f"Picture mode(Colorful): {image_file}")
+        files: list[str] = []
+        files.append(image_file)
+        ImageColorPencilSketch(files)
     return
 
 

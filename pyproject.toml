@@ -47,6 +47,27 @@ ruff = "^0.0.238"
 [tool.bandit]
 tests = ["B201", "B301"]
 
+[tool.isort]
+line_length = 79
+profile = "black"
+
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
