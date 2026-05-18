@@ -41,11 +41,9 @@ def ImageGrayScalePencilSketch(files: List[str], image_count: int = 0) -> None:
 def _CameraCapture(video_src: int = 0, color_mode: bool = False) -> None:
     videocapture = VideoCapture(video_src)
     if videocapture.isOpened() is False:
-        print(
-            """The Camera ID you choose cannot open.\
+        print("""The Camera ID you choose cannot open.\
             It could be used by other programs or\
-            unavailable camera,exiting."""
-        )
+            unavailable camera,exiting.""")
         sys_exit()
 
     namedWindow("Sketch Generator")
