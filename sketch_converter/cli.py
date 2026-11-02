@@ -21,14 +21,12 @@ def version():
 def video_capture_grayscale(videosrc: int = 0) -> None:
     print(f"Video mode(Grayscale): {videosrc}")
     CameraGrayPencilSketch(videosrc)
-    return
 
 
 @app.command()
 def video_capture_color(videosrc: int = 0) -> None:
     print(f"Video mode(Colorful): {videosrc}")
     CameraColorPencilSketch(videosrc)
-    return
 
 
 @app.command()
@@ -38,7 +36,6 @@ def convert_to_gray_pencil_sketch(image_file: str) -> None:
         files: list[str] = []
         files.append(image_file)
         ImageGrayScalePencilSketch(files)
-    return
 
 
 @app.command()
@@ -48,7 +45,6 @@ def convert_to_color_pencil_sketch(image_file: str) -> None:
         files: list[str] = []
         files.append(image_file)
         ImageColorPencilSketch(files)
-    return
 
 
 if __name__ == "__main__":
